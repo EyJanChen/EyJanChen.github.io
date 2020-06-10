@@ -6,23 +6,32 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-04T22:47:32.318Z</updated>
+  <updated>2020-06-10T01:50:30.947Z</updated>
   <id>http://yoursite.com/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="http://yoursite.com/2020/05/05/test/"/>
-    <id>http://yoursite.com/2020/05/05/test/</id>
-    <published>2020-05-04T22:47:32.000Z</published>
-    <updated>2020-05-04T22:47:32.318Z</updated>
+    <title>Unity3D资源导入</title>
+    <link href="http://yoursite.com/2020/06/10/Unity3d%E8%B5%84%E6%BA%90%E5%AF%BC%E5%85%A5/"/>
+    <id>http://yoursite.com/2020/06/10/Unity3d%E8%B5%84%E6%BA%90%E5%AF%BC%E5%85%A5/</id>
+    <published>2020-06-09T21:27:16.000Z</published>
+    <updated>2020-06-10T01:50:30.947Z</updated>
+    
+    <content type="html"><![CDATA[<p>在一般的游戏开发过程中，资源是开发人员接触最为频繁的东西。一个好的游戏不单单是看起来好看，同时也能够带给玩家沉浸感，好的美术，动画，音乐都会带给玩家更好的视听享受。所以资源是一个很重要的概念。当然，在好看的同时也要确保性能能够跟得上，不会出现卡顿或者是打断玩家的一些操作。所以有必要了解一些资源的基础概念和一些基础的操作，好能够更好的使用和优化我们手头上的资源。</p><p>游戏中的资源一般分为以下几种大的分类：</p><ol><li><p>美术资源</p><pre><code>3D模型   2D图像   3D动画   2D动画</code></pre></li><li><p>音频资源</p></li><li><p>视频资源</p></li></ol><h1 id="3D模型资源"><a href="#3D模型资源" class="headerlink" title="3D模型资源"></a>3D模型资源</h1><h2 id="导入选项"><a href="#导入选项" class="headerlink" title="导入选项"></a>导入选项</h2><p><img src="/2020/06/10/Unity3d%E8%B5%84%E6%BA%90%E5%AF%BC%E5%85%A5/model_setting.png" alt></p><p>在模型导入之后，单点模型，在Inspector面板中会有Import Setting显示</p><p>Model：模型设置</p><p>Rig：装备设置</p><p>Animation：动画导入设置</p><p>Materials：材质导入设置</p><p>首先看Model，这里分为三个部分，Scene是在场景中显示的导入设置，Meshes是关于网格的设置，Geometry是几何设置也就是关于一些贴图的设置。</p><table><thead><tr><th><strong>Scene</strong></th><th></th></tr></thead><tbody><tr><td>Scale Factor</td><td>设置这个模型在游戏世界中的缩放比例</td></tr><tr><td>Convert Units</td><td>模型的单位转换，在3D文件中的比例转换unity世界中的单位</td></tr><tr><td>Import BlendShapes</td><td>导入文件中的混合变形器（BlendShapes是一种动画制作方式，原理就是在两个网格之间做插值运算，从上一个形状变形到另一个形状，适用于面部表情）</td></tr><tr><td>Import Visibility</td><td>导入文件中的可见性设置</td></tr><tr><td>Import Cameras</td><td>导入文件中的摄像机</td></tr><tr><td>Import Lights</td><td>导入文件中的灯光</td></tr><tr><td>Preserve Hierarchy</td><td>是否保留文件层次</td></tr><tr><td>Sort Hierarchy By Name</td><td>按字母表顺序在Hierarchy面板中排序</td></tr></tbody></table><table><thead><tr><th><strong>Meshes</strong></th><th></th></tr></thead><tbody><tr><td>Mesh Compression</td><td>网格压缩选项，有四个选项可以选（低中高无），用来优化网格的大小，但可能会导致网格出现错误</td></tr><tr><td>Read/Write Enabled</td><td>是否开始读写模式</td></tr><tr><td>Optimize Mesh</td><td>优化网格，确定三角形顶点的顺序，最优的选择给到GPU</td></tr><tr><td>Generate Colliders</td><td>生成碰撞体，这个对于静态物体可以使用</td></tr></tbody></table><table><thead><tr><th><strong>Geometry</strong></th><th>这里主要是关于网格，UV以及贴图方面的导入选项</th></tr></thead><tbody><tr><td>Keep Quads</td><td>保持网格的四边形结构，不转换为三角形</td></tr><tr><td>Weld Vertices</td><td>焊接顶点，相同位置的顶点将会被合并</td></tr><tr><td>Index Format</td><td>Define the size of the Mesh index buffer.定义网格buffer的大小</td></tr><tr><td>Legacy Blend Shape Normals</td><td>当有Blend Shape的时候从平滑组中计算发现</td></tr><tr><td>Blend Shape Normals</td><td>Blend Shape的法线生成方式，计算/导入/没有</td></tr><tr><td>Normals</td><td>法线的生成方式，计算/导入/没有</td></tr><tr><td>Normals Mode</td><td>定义发现在Unity中的计算方式</td></tr><tr><td>Smoothness Source</td><td>设置确定平滑的方式</td></tr><tr><td>Smoothing Angle</td><td>平滑角度，计算法线的时候用</td></tr><tr><td>Tangents</td><td>切线选项</td></tr><tr><td>Swap UVs</td><td>置换UV，当UV对象不正确的时候可以勾选此项</td></tr><tr><td>Generate Lightmap UVs</td><td>为光照贴图生成UV</td></tr></tbody></table><h2 id="uv"><a href="#uv" class="headerlink" title="uv"></a>uv</h2><p>在图形学中uv指的是纹理映射；<br>纹理是什么？就是光栅图像，像素成为纹素，也就是纹理元素的意思；<br>纹理的位置通常称为纹理坐标或者是uv坐标；<br>纹理可能需要覆盖三维表面，从而定义了一个二维的纹理空间到三维表面的映射；<br>纹理空间就是纹理对应于（0，0）与（1，1）之间的矩形区域；<br>uv坐标是一张图像的坐标，作用是用来定位像素，查找纹理的像素；</p><h2 id="光照贴图"><a href="#光照贴图" class="headerlink" title="光照贴图"></a>光照贴图</h2><p>光照贴图主要是对一些静态的物体的光照，是预先进行光照计算并且储存，不需要实时计算光照，适用于光照稳定的物体的贴图。说白了就是将光照的信息预先计算好了之后储存到一张贴图中，而后物体贴上光照贴图就不需要实时的灯光来照物体。</p><h2 id="法线-amp-切线"><a href="#法线-amp-切线" class="headerlink" title="法线&amp;切线"></a>法线&amp;切线</h2><ol><li>法线贴图？就是能够让光滑的平面有凹凸感的贴图。物体的凹凸感是通过光影来表现的，凹凸感就是是因为光照角度的不同，所以法线贴图是一种记录了需要进行光影变化的贴图，各个点的凹凸情况的贴图；</li><li>法线？法线是始终垂直于平面的线；</li><li>在物理学中，光的折射计算是通过法线来计算，那么法线贴图的作用实际上就是用来记录这些法线信息的贴图；其实实际上不是一张图，因为是借助了图像中的RGB来代表法向量中的XYZ，即为X=R，Y=G，Z=B；通过每个点的法向量信息来生成一张贴图，在进行光照计算的时候用这张图的信息来获取每个点的法向量；</li><li>法线贴图有两种模式来储存法线的信息，一种是基于模型空间，一种是基于切线空间的；</li><li>切线？就是垂直于法线的线；</li><li>基于模型空间就很好理解，就是基于模型的坐标系来定义这些点的法线；那么基于切线空间，就是在模型上某一个点，基于这个点建立坐标系，切线为X轴，法线为Y轴，副法线为Z轴；</li></ol><h2 id="Rig-amp-Animation"><a href="#Rig-amp-Animation" class="headerlink" title="Rig &amp; Animation"></a>Rig &amp; Animation</h2><h1 id="2D图像"><a href="#2D图像" class="headerlink" title="2D图像"></a>2D图像</h1><h1 id="3D动画-amp-2D动画"><a href="#3D动画-amp-2D动画" class="headerlink" title="3D动画 &amp; 2D动画"></a>3D动画 &amp; 2D动画</h1><h1 id="音频-amp-视频"><a href="#音频-amp-视频" class="headerlink" title="音频 &amp; 视频"></a>音频 &amp; 视频</h1>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;在一般的游戏开发过程中，资源是开发人员接触最为频繁的东西。一个好的游戏不单单是看起来好看，同时也能够带给玩家沉浸感，好的美术，动画，音乐都会带给玩家更好的视听享受。所以资源是一个很重要的概念。当然，在好看的同时也要确保性能能够跟得上，不会出现卡顿或者是打断玩家的一些操作。所
+      
     
     </summary>
     
     
+    
+      <category term="unity 资源 模型 图像 uv 导入选项" scheme="http://yoursite.com/tags/unity-%E8%B5%84%E6%BA%90-%E6%A8%A1%E5%9E%8B-%E5%9B%BE%E5%83%8F-uv-%E5%AF%BC%E5%85%A5%E9%80%89%E9%A1%B9/"/>
     
   </entry>
   
